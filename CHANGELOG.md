@@ -27,9 +27,12 @@
 - **Lock/idle is gtklock + swayidle, not hyprlock/hypridle.** niri is Smithay-based, not wlroots
   — the community reference (niri-saatvik333's waybar rice) proved gtklock as the working
   niri-native choice; both packages are in Arch `extra` (no chaotic-aur/3PARTY packaging needed).
-- **Self-contained, not a `kiro-wayland-dotfiles` consumer** — that shared package's
-  `depends=(mako hyprlock hypridle)` would force-install unused hyprlock/hypridle. Ships its own
-  `mako/config` + `waybar/colors.css`+`style.css` copies instead (same Tokyo Night palette).
+- **`kiro-wayland-dotfiles` consumer** for `mako/config` + `waybar/colors.css`/`style.css` (same
+  Tokyo Night palette), matching every other waybar edition — reversed from an initial
+  self-contained design that duplicated those same absolute paths (a real file-ownership conflict
+  with any other `kiro-wayland-dotfiles` consumer installed alongside). Force-installs
+  `hyprlock`/`hypridle` unused (that package's own `depends`), accepted to avoid the duplication.
+  Ships only its own unique `waybar/config-ohmyniri.jsonc` + `gtklock/` config.
 - Not yet verified on a real niri boot: waybar window-title module (dropped for now, no confirmed
   niri equivalent), gtklock visual rendering, swayidle timeout behavior under niri's
   idle-notify protocol implementation. Same "verify on real boot" caveat kiro-wayfire carries.
@@ -44,10 +47,11 @@
 ### Files Modified
 - `etc/skel/.config/niri/config.kdl` + `cfg/*.kdl` + `keybindings.txt` + `bg/kiro.jpg` +
   `scripts/import-gsettings.sh`
-- `etc/skel/.config/waybar/config-ohmyniri.jsonc`, `colors.css`, `style.css`
-- `etc/skel/.config/mako/config`
+- `etc/skel/.config/waybar/config-ohmyniri.jsonc`
 - `etc/skel/.config/gtklock/config.ini`, `style.css`
 - `etc/dconf/db/local.d/00-kiro.conf`, `etc/dconf/profile/user`
 - `README.md`, `CLAUDE.md`, `up.sh`, `setup.sh`
-- `KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD` (`conflicts`), `KIROTUX-PKG-BUILD/kiro-niri/PKGBUILD`
-  (reciprocal `conflicts`)
+- `KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD` (`conflicts`, then `kiro-wayland-dotfiles` dep +
+  dropped `mako`), `KIROTUX-PKG-BUILD/kiro-niri/PKGBUILD` (reciprocal `conflicts`)
+- Removed: `etc/skel/.config/mako/config`, `etc/skel/.config/waybar/colors.css`, `style.css`
+  (now sourced from `kiro-wayland-dotfiles`)

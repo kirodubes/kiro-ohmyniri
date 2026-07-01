@@ -17,9 +17,9 @@ sibling of `kiro-chadwm`.
 - `etc/skel/.config/niri/` — the niri config, modular: `config.kdl` `include`s `cfg/*.kdl`
   (`keybinds`, `input`, `layout`, `rules`, `misc`, `animation`, `autostart`, `display`), plus a
   `keybindings.txt` cheat sheet, the wallpaper, and `scripts/import-gsettings.sh`.
-- `etc/skel/.config/waybar/` — `config-ohmyniri.jsonc` (native `niri/workspaces` module) +
-  `colors.css`/`style.css`, Tokyo Night.
-- `etc/skel/.config/mako/config` — notifications, Tokyo Night.
+- `etc/skel/.config/waybar/config-ohmyniri.jsonc` — native `niri/workspaces` module. The
+  `colors.css`/`style.css`/`mako/config` are **not** shipped here — they come from
+  `kiro-wayland-dotfiles`, shared with the other waybar editions.
 - `etc/skel/.config/gtklock/` — lock screen config + style, Tokyo Night.
 - `etc/dconf/` — system-wide dark GTK + Kiro cursor defaults.
 
@@ -29,10 +29,11 @@ sibling of `kiro-chadwm`.
 sudo pacman -S kiro-ohmyniri
 ```
 
-`kiro-ohmyniri` depends on `niri` + `waybar` + `mako` + `swaybg` + `rofi` + `gtklock` +
-`swayidle` plus the usual Wayland helpers — all from Arch `extra`. On a fresh login niri starts
-the shell directly (no Quickshell). Press **Super + Ctrl + S** for the searchable keybindings
-cheat sheet, or **Super + Shift + /** for niri's built-in hotkey overlay.
+`kiro-ohmyniri` depends on `niri` + `waybar` + `swaybg` + `rofi` + `gtklock` + `swayidle` +
+`kiro-wayland-dotfiles` (mako + waybar colours, pulling in `hyprlock`/`hypridle` unused) plus the
+usual Wayland helpers — all from Arch `extra`. On a fresh login niri starts the shell directly
+(no Quickshell). Press **Super + Ctrl + S** for the searchable keybindings cheat sheet, or
+**Super + Shift + /** for niri's built-in hotkey overlay.
 
 A pristine copy of the config is kept at `/usr/share/kiro/kiro-ohmyniri/` so it can be restored.
 

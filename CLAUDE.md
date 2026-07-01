@@ -27,9 +27,13 @@ the first WM to get the pattern; the ADR is in
   `/etc/xdg/autostart`.
 - **Theming:** **static Tokyo Night**, matching kiro-hyprland exactly — not pywal (the
   wayfire/sway/river/labwc choice) and not noctalia/matugen (`kiro-niri`).
-- **Not a `kiro-wayland-dotfiles` consumer.** That shared package's `depends=(mako hyprlock
-  hypridle)` would force-install unused hyprlock/hypridle. Ships its own `mako/config` +
-  `waybar/colors.css`/`style.css` copies (same Tokyo Night palette) instead.
+- **`kiro-wayland-dotfiles` consumer** (reversed 2026-07-01 — see ADR-014 addendum): depends on it
+  for `mako/config` + `waybar/colors.css`/`style.css` (same Tokyo Night palette), same as every
+  other waybar edition. Ships only its own `waybar/config-ohmyniri.jsonc` (unique path). This
+  force-installs `hyprlock`+`hypridle` unused (kiro-wayland-dotfiles's own `depends`) since this
+  edition locks/idles with gtklock/swayidle instead — accepted tradeoff for not duplicating the
+  shared mako/waybar files (and the file-ownership conflict duplicating them would cause with any
+  other kiro-wayland-dotfiles consumer installed alongside).
 - **Dependencies:** everything from Arch `extra` — nothing packaged by Kiro (`gtklock`,
   `swayidle` both confirmed in `extra`, no chaotic-aur/3PARTY needed).
 - **`conflicts=('kiro-niri')` (reciprocal — `kiro-niri` carries `conflicts=('kiro-ohmyniri')`).**
