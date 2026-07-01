@@ -34,6 +34,13 @@
   niri equivalent), gtklock visual rendering, swayidle timeout behavior under niri's
   idle-notify protocol implementation. Same "verify on real boot" caveat kiro-wayfire carries.
 
+- **Declared `conflicts=('kiro-niri')` in the PKGBUILD (reciprocal — `kiro-niri`'s PKGBUILD now
+  carries `conflicts=('kiro-ohmyniri')`).** Both packages ship identical absolute paths
+  (`/etc/skel/.config/niri/**`, `etc/dconf/db/local.d/00-kiro.conf`, `etc/dconf/profile/user`),
+  and niri always reads `~/.config/niri/config.kdl` regardless of which package installed it —
+  so the two editions can never usefully coexist. Same pattern as
+  `kiro-calamares-config-hyprland` vs `kiro-calamares-config(-next)`.
+
 ### Files Modified
 - `etc/skel/.config/niri/config.kdl` + `cfg/*.kdl` + `keybindings.txt` + `bg/kiro.jpg` +
   `scripts/import-gsettings.sh`
@@ -42,3 +49,5 @@
 - `etc/skel/.config/gtklock/config.ini`, `style.css`
 - `etc/dconf/db/local.d/00-kiro.conf`, `etc/dconf/profile/user`
 - `README.md`, `CLAUDE.md`, `up.sh`, `setup.sh`
+- `KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD` (`conflicts`), `KIROTUX-PKG-BUILD/kiro-niri/PKGBUILD`
+  (reciprocal `conflicts`)

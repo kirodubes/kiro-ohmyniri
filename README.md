@@ -35,3 +35,7 @@ the shell directly (no Quickshell). Press **Super + Ctrl + S** for the searchabl
 cheat sheet, or **Super + Shift + /** for niri's built-in hotkey overlay.
 
 A pristine copy of the config is kept at `/usr/share/kiro/kiro-ohmyniri/` so it can be restored.
+
+**Not co-installable with `kiro-niri`** (`conflicts=('kiro-niri')`, reciprocal) — both ship the
+same `~/.config/niri/` paths, and niri itself always reads `~/.config/niri/config.kdl`, so pick
+one niri edition.

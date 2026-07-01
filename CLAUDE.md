@@ -32,6 +32,14 @@ the first WM to get the pattern; the ADR is in
   `waybar/colors.css`/`style.css` copies (same Tokyo Night palette) instead.
 - **Dependencies:** everything from Arch `extra` — nothing packaged by Kiro (`gtklock`,
   `swayidle` both confirmed in `extra`, no chaotic-aur/3PARTY needed).
+- **`conflicts=('kiro-niri')` (reciprocal — `kiro-niri` carries `conflicts=('kiro-ohmyniri')`).**
+  Both packages ship the same absolute paths (`/etc/skel/.config/niri/config.kdl` + every
+  `cfg/*.kdl`, `keybindings.txt`, `bg/kiro.jpg`, `etc/dconf/db/local.d/00-kiro.conf`,
+  `etc/dconf/profile/user`) — niri itself always reads `~/.config/niri/config.kdl`, so two niri
+  configs can't usefully coexist for one user regardless of packaging. Same pattern as
+  `kiro-calamares-config-hyprland` conflicting with `kiro-calamares-config(-next)` — a drop-in
+  alternative, never co-installed, not a coexisting shared-base situation like
+  `kiro-wayland-dotfiles`'s wlroots editions.
 
 ## Keybindings
 - niri-native window/column/workspace management **kept verbatim from kiro-niri** (column model:
