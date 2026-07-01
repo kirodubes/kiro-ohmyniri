@@ -17,7 +17,7 @@ spawn-sh-at-startup "~/.config/niri/scripts/import-gsettings.sh"
 spawn-sh-at-startup "swayidle -w timeout 300 'gtklock' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors' before-sleep 'gtklock'"
 
 // Wallpaper rotator — configured by kiro-variety-config, matches kiro-hyprland.
-spawn-at-startup "variety"
+// spawn-at-startup "variety"
 
 // Create the XDG user dirs (Documents, Music, Pictures, …) on first login —
 // niri doesn't run the xdg-user-dirs autostart, so do it explicitly. Idempotent.
