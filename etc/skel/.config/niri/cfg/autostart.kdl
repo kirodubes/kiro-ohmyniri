@@ -1,0 +1,29 @@
+// ────────────── Startup Applications ──────────────
+// niri does not process /etc/xdg/autostart, so everything starts here.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-at-startup
+
+// The shell: waybar (bar) + mako (notifications) + swaybg (wallpaper) + a
+// polkit agent — the same stack kiro-hyprland uses, so this edition matches
+// its look and feel instead of noctalia-shell's.
+spawn-sh-at-startup "swaybg -m fill -i ~/.config/niri/bg/kiro.jpg"
+spawn-sh-at-startup "env GTK_A11Y=none waybar -c ~/.config/waybar/config-ohmyniri.jsonc"
+spawn-at-startup "mako"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-sh-at-startup "~/.config/niri/scripts/import-gsettings.sh"
+
+// Idle → lock (gtklock) after 5 min, display off after 10 min. gtklock is the
+// niri-native lock choice (Smithay compositor, not wlroots — hyprlock/hypridle
+// are unverified here); swayidle just needs the generic idle-notify protocol.
+spawn-sh-at-startup "swayidle -w timeout 300 'gtklock' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors' before-sleep 'gtklock'"
+
+// Wallpaper rotator — configured by kiro-variety-config, matches kiro-hyprland.
+spawn-at-startup "variety"
+
+// Create the XDG user dirs (Documents, Music, Pictures, …) on first login —
+// niri doesn't run the xdg-user-dirs autostart, so do it explicitly. Idempotent.
+spawn-at-startup "xdg-user-dirs-update"
+
+// Live ISO only: auto-launch the Calamares installer. Gated on the archiso
+// boot mount so it never fires on an installed system; kiro_final strips this
+// line on install.
+spawn-sh-at-startup "[ -d /run/archiso/bootmnt ] && calamares_polkit -d -style kvantum"

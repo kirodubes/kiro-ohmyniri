@@ -1,0 +1,20 @@
+/* gtklock — Tokyo Night, matching kiro-hyprland's look. */
+window {
+  /* Relative to this file (~/.config/gtklock/) — resolves for any user. */
+  background-image: url("../niri/bg/kiro.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#clock-label {
+  color: #c0caf5;
+  font-weight: bold;
+}
+
+entry {
+  background-color: rgba(26, 27, 38, 0.85);
+  color: #c0caf5;
+  border: 2px solid #7aa2f7;
+  border-radius: 8px;
+}

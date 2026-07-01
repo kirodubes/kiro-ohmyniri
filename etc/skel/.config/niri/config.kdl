@@ -1,0 +1,26 @@
+// ════════════════════════════════════════════════════════════════════════
+// Kiro ohmyniri baseline config  (config.kdl)
+// ════════════════════════════════════════════════════════════════════════
+// Target: niri (scrollable-tiling Wayland compositor). Config format: KDL.
+// Lives at: ~/.config/niri/config.kdl
+//
+// Desktop shell: waybar + mako + swaybg + rofi + gtklock — the same shell
+// stack as kiro-hyprland, so this edition matches its look and feel. (The
+// sibling `kiro-niri` edition instead pairs niri with noctalia-shell.)
+// niri is only the compositor; the shell pieces are started in autostart.kdl.
+//
+// Modular: each concern lives in its own cfg/*.kdl file, pulled in below.
+// Window/column management and app keybinds carry Kiro's SUPER-based
+// philosophy, shared with kiro-niri.
+//
+// Docs: https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+// ────────────────────────────────────────────────────────────────────────
+
+include "./cfg/animation.kdl"
+include "./cfg/autostart.kdl"
+include "./cfg/keybinds.kdl"
+include "./cfg/input.kdl"
+include "./cfg/display.kdl"
+include "./cfg/layout.kdl"
+include "./cfg/rules.kdl"
+include "./cfg/misc.kdl"
