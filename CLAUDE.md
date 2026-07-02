@@ -41,7 +41,7 @@ the first WM to get the pattern; the ADR is in
   `cfg/*.kdl`, `keybindings.txt`, `bg/kiro.jpg`, `etc/dconf/db/local.d/00-kiro.conf`,
   `etc/dconf/profile/user`) — niri itself always reads `~/.config/niri/config.kdl`, so two niri
   configs can't usefully coexist for one user regardless of packaging. Same pattern as
-  `kiro-calamares-config-hyprland` conflicting with `kiro-calamares-config(-next)` — a drop-in
+  `kiro-calamares-config-wayland` conflicting with `kiro-calamares-config(-next)` — a drop-in
   alternative, never co-installed, not a coexisting shared-base situation like
   `kiro-wayland-dotfiles`'s wlroots editions.
 
