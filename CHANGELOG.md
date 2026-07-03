@@ -10,6 +10,10 @@
   **`NIRI_CONFIG`**, and the whole niri config tree moved from `etc/skel/.config/niri/` to
   `etc/skel/.config/kiro-ohmyniri/` (relative `./cfg/*.kdl` includes come along untouched). The upstream
   plain "Niri" greeter entry is hidden with a `NoDisplay=true` pacman hook (same pattern as kiro-mango).
+- **Dropped `conflicts=('kiro-niri')` — the two editions can now be co-installed.** The conflict only
+  existed because both shipped `etc/skel/.config/niri/`; with per-edition folders/entries/wrappers they
+  share no files. Both "Kiro Niri" and "Kiro OhMyNiri" can now sit in the greeter, switchable per-login.
+  The remove-hook un-hide of upstream "Niri" is guarded to only fire when the sibling edition is gone.
 
 ### Technical Details
 - `kiro-ohmyniri-session`: sets `NIRI_CONFIG` (both `export` and `systemctl --user set-environment`), then
@@ -28,7 +32,7 @@
 - [usr/bin/kiro-ohmyniri-hide-upstream-session](usr/bin/kiro-ohmyniri-hide-upstream-session) (new)
 - [usr/share/libalpm/hooks/kiro-ohmyniri-hide-upstream-session.hook](usr/share/libalpm/hooks/kiro-ohmyniri-hide-upstream-session.hook) (new)
 - [../KIROTUX-PKG-BUILD/kiro-ohmyniri/kiro-ohmyniri.install](../KIROTUX-PKG-BUILD/kiro-ohmyniri/kiro-ohmyniri.install)
-- [../KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD](../KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD) (pkgrel 11 → 12)
+- [../KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD](../KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD) (pkgrel 11 → 13)
 
 ## 2026.07.02
 
