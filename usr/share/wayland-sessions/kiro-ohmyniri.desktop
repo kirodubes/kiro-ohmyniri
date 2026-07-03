@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Kiro OhMyNiri
+Comment=Kiro ohmyniri edition (niri + waybar, kiro-hyprland look)
+Exec=kiro-ohmyniri-session
+Type=Application
+DesktopNames=niri

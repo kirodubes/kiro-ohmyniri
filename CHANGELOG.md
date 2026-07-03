@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026.07.03
+
+### What Changed
+- **Own session entry + own config folder (`~/.config/kiro-ohmyniri/`).** kiro-niri and kiro-ohmyniri
+  both boot the upstream `niri.desktop` and shared `~/.config/niri/`, so switching editions inherited
+  the other's stale config. Now this edition ships **`kiro-ohmyniri.desktop`** ("Kiro OhMyNiri") → a
+  **`kiro-ohmyniri-session`** wrapper that points niri at `~/.config/kiro-ohmyniri/config.kdl` via
+  **`NIRI_CONFIG`**, and the whole niri config tree moved from `etc/skel/.config/niri/` to
+  `etc/skel/.config/kiro-ohmyniri/` (relative `./cfg/*.kdl` includes come along untouched). The upstream
+  plain "Niri" greeter entry is hidden with a `NoDisplay=true` pacman hook (same pattern as kiro-mango).
+
+### Technical Details
+- `kiro-ohmyniri-session`: sets `NIRI_CONFIG` (both `export` and `systemctl --user set-environment`), then
+  `exec niri-session`. niri-session's own `systemctl --user import-environment` propagates it into
+  `niri.service`.
+- Hide hook + helper (`usr/bin/kiro-ohmyniri-hide-upstream-session`, `usr/share/libalpm/hooks/…`): `.install`
+  applies on first install, hook re-applies after niri upgrades, `post_remove` strips it back out.
+- Pairs with `archlinux-logout-gtk4` 26.07-07: `DESKTOP_SESSION=kiro-ohmyniri` now distinguishes the edition
+  directly, so its logout kills the loose waybar/mako/swayidle/variety daemons then `niri msg action quit -s`.
+
+### Files Modified
+- `etc/skel/.config/niri/` → `etc/skel/.config/kiro-ohmyniri/` (moved)
+- [etc/skel/.config/kiro-ohmyniri/config.kdl](etc/skel/.config/kiro-ohmyniri/config.kdl) (header path)
+- [usr/bin/kiro-ohmyniri-session](usr/bin/kiro-ohmyniri-session) (new)
+- [usr/share/wayland-sessions/kiro-ohmyniri.desktop](usr/share/wayland-sessions/kiro-ohmyniri.desktop) (new)
+- [usr/bin/kiro-ohmyniri-hide-upstream-session](usr/bin/kiro-ohmyniri-hide-upstream-session) (new)
+- [usr/share/libalpm/hooks/kiro-ohmyniri-hide-upstream-session.hook](usr/share/libalpm/hooks/kiro-ohmyniri-hide-upstream-session.hook) (new)
+- [../KIROTUX-PKG-BUILD/kiro-ohmyniri/kiro-ohmyniri.install](../KIROTUX-PKG-BUILD/kiro-ohmyniri/kiro-ohmyniri.install)
+- [../KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD](../KIROTUX-PKG-BUILD/kiro-ohmyniri/PKGBUILD) (pkgrel 11 → 12)
+
 ## 2026.07.02
 
 ### What Changed

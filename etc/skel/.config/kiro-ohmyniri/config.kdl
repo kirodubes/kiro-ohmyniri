@@ -2,7 +2,9 @@
 // Kiro ohmyniri baseline config  (config.kdl)
 // ════════════════════════════════════════════════════════════════════════
 // Target: niri (scrollable-tiling Wayland compositor). Config format: KDL.
-// Lives at: ~/.config/niri/config.kdl
+// Lives at: ~/.config/kiro-ohmyniri/config.kdl  (niri is pointed here by the
+// kiro-ohmyniri-session wrapper via NIRI_CONFIG; the sibling kiro-niri
+// edition uses ~/.config/kiro-niri/ the same way).
 //
 // Desktop shell: waybar + mako + swaybg + rofi + gtklock — the same shell
 // stack as kiro-hyprland, so this edition matches its look and feel. (The
