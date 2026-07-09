@@ -14,14 +14,14 @@ sibling of `kiro-chadwm`.
 
 ## What it ships
 
-- `etc/skel/.config/niri/` — the niri config, modular: `config.kdl` `include`s `cfg/*.kdl`
+- `etc/skel/.config/kiro-ohmyniri/` — the niri config, modular: `config.kdl` `include`s `cfg/*.kdl`
   (`keybinds`, `input`, `layout`, `rules`, `misc`, `animation`, `autostart`, `display`), plus a
   `keybindings.txt` cheat sheet, the wallpaper, and `scripts/import-gsettings.sh`.
 - `etc/skel/.config/waybar/config-ohmyniri.jsonc` — native `niri/workspaces` module. The
-  `colors.css`/`style.css`/`mako/config` are **not** shipped here — they come from
-  `kiro-wayland-dotfiles`, shared with the other waybar editions.
+  `colors.css`/`style.css`/`mako/config` and the system-wide dark GTK + Kiro cursor dconf defaults
+  are **not** shipped here — they come from `kiro-wayland-dotfiles`, shared with the other waybar
+  editions.
 - `etc/skel/.config/gtklock/` — lock screen config + style, Tokyo Night.
-- `etc/dconf/` — system-wide dark GTK + Kiro cursor defaults.
 
 ## How to install
 
@@ -37,6 +37,7 @@ usual Wayland helpers — all from Arch `extra`. On a fresh login niri starts th
 
 A pristine copy of the config is kept at `/usr/share/kiro/kiro-ohmyniri/` so it can be restored.
 
-**Not co-installable with `kiro-niri`** (`conflicts=('kiro-niri')`, reciprocal) — both ship the
-same `~/.config/niri/` paths, and niri itself always reads `~/.config/niri/config.kdl`, so pick
-one niri edition.
+**Co-installable with `kiro-niri`** — each edition ships its own namespaced config folder
+(`~/.config/kiro-ohmyniri/` vs `~/.config/kiro-niri-noctalia/`) and its own session that points
+niri there via `NIRI_CONFIG`, so there are no shared paths. The old reciprocal
+`conflicts=('kiro-niri')` was dropped (2026.07.03); install both and pick one per-login.

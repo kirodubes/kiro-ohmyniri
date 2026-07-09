@@ -14,7 +14,7 @@ the first WM to get the pattern; the ADR is in
 ## Edition spec (the WM-variable matrix)
 - **Compositor:** niri (scrollable-tiling, Smithay-based — *not* wlroots). Compositor-level config
   (window/column management, KDL structure) is identical to `kiro-niri`.
-- **Config language:** KDL. `etc/skel/.config/niri/config.kdl` `include`s `cfg/*.kdl`.
+- **Config language:** KDL. `etc/skel/.config/kiro-ohmyniri/config.kdl` `include`s `cfg/*.kdl`.
 - **Desktop shell:** **waybar + mako + swaybg + rofi + gtklock** — kiro-hyprland's stack, ported.
   waybar uses the native `niri/workspaces` module (confirmed via the community reference
   `niri-saatvik333-waybar-rice`) — no custom IPC workspace hack needed, unlike wayfire.
@@ -36,14 +36,13 @@ the first WM to get the pattern; the ADR is in
   other kiro-wayland-dotfiles consumer installed alongside).
 - **Dependencies:** everything from Arch `extra` — nothing packaged by Kiro (`gtklock`,
   `swayidle` both confirmed in `extra`, no chaotic-aur/3PARTY needed).
-- **`conflicts=('kiro-niri')` (reciprocal — `kiro-niri` carries `conflicts=('kiro-ohmyniri')`).**
-  Both packages ship the same absolute paths (`/etc/skel/.config/niri/config.kdl` + every
-  `cfg/*.kdl`, `keybindings.txt`, `bg/kiro.jpg`, `etc/dconf/db/local.d/00-kiro.conf`,
-  `etc/dconf/profile/user`) — niri itself always reads `~/.config/niri/config.kdl`, so two niri
-  configs can't usefully coexist for one user regardless of packaging. Same pattern as
-  `kiro-calamares-config-wayland` conflicting with `kiro-calamares-config(-next)` — a drop-in
-  alternative, never co-installed, not a coexisting shared-base situation like
-  `kiro-wayland-dotfiles`'s wlroots editions.
+- **Co-installable with `kiro-niri` (noctalia edition) — `conflicts=` dropped 2026.07.03.**
+  Each edition now ships a **namespaced** config folder (`etc/skel/.config/kiro-ohmyniri/` vs
+  `kiro-niri-noctalia/`) and its own session wrapper that points niri at it via `NIRI_CONFIG`, so
+  they no longer share `~/.config/niri/` paths. dconf defaults come from `kiro-wayland-dotfiles`
+  (single owner), not from either edition. Both install together and are picked per-login — like
+  the other KIROTUX editions, not the drop-in-replacement pattern of
+  `kiro-calamares-config-wayland`.
 
 ## Keybindings
 - niri-native window/column/workspace management **kept verbatim from kiro-niri** (column model:

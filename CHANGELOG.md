@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026.07.09
+
+### Docs: fix stale config path, ship-list, and dropped-conflict claim
+
+**What Changed**
+- **Config path** updated `etc/skel/.config/niri/` → `kiro-ohmyniri/` in both README and CLAUDE.md
+  (the folder was namespaced on 2026.07.03).
+- **Dropped-conflict claim fixed:** README and CLAUDE.md both stated
+  `conflicts=('kiro-niri')`/"not co-installable" — but the conflict was **dropped** (2026.07.03)
+  and the two niri editions are co-installable via namespaced folders + `NIRI_CONFIG`.
+- **README "What it ships"** dropped the `etc/dconf/` line (system dconf defaults come from
+  `kiro-wayland-dotfiles`, not this package).
+
+**Files Modified**
+- `README.md`, `CLAUDE.md`
+
 ## 2026.07.07
 
 ### Keyboard: US default + normalized Alt+Shift toggle
