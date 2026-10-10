@@ -3,6 +3,7 @@
 ## 2026.10.10
 
 ### What Changed
+- The KiroTux installer config package is now named `kirotux-calamares-config`; the name in `CLAUDE.md` follows.
 - Source repo moved from `~/KIROTUX/kiro-ohmyniri` to `~/KIRO/kiro-ohmyniri` and its recipe to `~/KIRO-PKG-BUILD-APPS/kiro-ohmyniri`: ATT installs it from nemesis_repo, so it is a Kiro package, not KiroTux-only. Paths and links in the docs follow. The package itself is unchanged.
 
 ### Files Modified

@@ -42,7 +42,7 @@ the first WM to get the pattern; the ADR is in
   they no longer share `~/.config/niri/` paths. dconf defaults come from `kiro-wayland-dotfiles`
   (single owner), not from either edition. Both install together and are picked per-login — like
   the other KIROTUX editions, not the drop-in-replacement pattern of
-  `kirotux-calamares-config-wayland`.
+  `kirotux-calamares-config`.
 
 ## Keybindings
 - niri-native window/column/workspace management **kept verbatim from kiro-niri** (column model:
