@@ -3,7 +3,7 @@
 ## Overview
 Config package for the **Kiro ohmyniri edition** — the niri member of the KIROTUX Wayland line
 that reuses [kiro-hyprland](../kiro-hyprland/CLAUDE.md)'s shell/look instead of noctalia-shell.
-Sibling to [kiro-niri](../kiro-niri/CLAUDE.md), which is the noctalia-shell edition of the same
+Sibling to [kiro-niri](../kiro-niri-noctalia/CLAUDE.md), which is the noctalia-shell edition of the same
 compositor. Public, open-core, shipped via `nemesis_repo`.
 
 **Naming convention:** `kiro-ohmy<wm>` = the batteries-included / kiro-hyprland-look sibling of a
@@ -42,7 +42,7 @@ the first WM to get the pattern; the ADR is in
   they no longer share `~/.config/niri/` paths. dconf defaults come from `kiro-wayland-dotfiles`
   (single owner), not from either edition. Both install together and are picked per-login — like
   the other KIROTUX editions, not the drop-in-replacement pattern of
-  `kiro-calamares-config-wayland`.
+  `kirotux-calamares-config-wayland`.
 
 ## Keybindings
 - niri-native window/column/workspace management **kept verbatim from kiro-niri** (column model:
@@ -70,6 +70,6 @@ the first WM to get the pattern; the ADR is in
 
 ## Build / delivery
 - Source-of-truth for the config; delivered as the `kiro-ohmyniri` package via
-  `../KIROTUX-PKG-BUILD/kiro-ohmyniri/build.sh` (public recipe → `~/EDU/nemesis_repo/`). After
+  `~/KIRO-PKG-BUILD-APPS/kiro-ohmyniri/build.sh` (public recipe → `~/EDU/nemesis_repo/`). After
   editing here: rebuild the package (recipe `build.sh`), then the ISO to test a fresh install.
-- See [../CLAUDE.md](../CLAUDE.md) for the full KIROTUX delivery architecture.
+- See [KIROTUX/CLAUDE.md](../../KIROTUX/CLAUDE.md) for the full KIROTUX delivery architecture.
