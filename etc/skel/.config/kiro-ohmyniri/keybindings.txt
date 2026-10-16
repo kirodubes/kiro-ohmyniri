@@ -1,7 +1,6 @@
 ###############################################################################
-#  KEYBINDINGS — niri (ohmyniri edition)
-#  Source: etc/skel/.config/niri/cfg/keybinds.kdl
-#  Generated: 2026.07.01
+#  KEYBINDINGS — Kiro OhMyNiri
+#  Source: etc/skel/.config/kiro-ohmyniri/cfg/keybinds.kdl
 #  Reference for the default bindings. Changed yours? Edit this file to match.
 #  Shell: waybar + mako + swaybg + rofi + gtklock (kiro-hyprland's look)
 ###############################################################################

@@ -6,16 +6,21 @@
 - **The installer's buttons are reachable in a small VM window.** In a virtual machine Calamares floated at a fixed
   1024x900, so on a screen less than ~934 px high (QEMU 1280x800) its Back/Next buttons sat off-screen. It now opens
   85% of the screen high (651 px on 800).
+- **The keybindings reference names this edition.** The header of `keybindings.txt` pointed at the old
+  `~/.config/niri` source path with a July date; it now reads "Kiro OhMyNiri" with the real source file.
 
 ### Technical Details
 - `cfg/calamares-vm.rule`: `default-window-height { fixed 900; }` → `{ proportion 0.85; }`; width stays `fixed 1024`.
   0.85 of a 1080-px output is ~918 px, still inside the stale 952-px X screen the rule was written for. Tested live
   in QEMU (1280x800): Calamares opens 1024x651 at y=92, fully on screen. `niri validate` passes with the rule on.
   Comment in `cfg/autostart.kdl` updated. Only the live ISO uses this file.
+- `keybindings.txt` header: title, `Source:` path → `etc/skel/.config/kiro-ohmyniri/cfg/keybinds.kdl`, the stale
+  `Generated:` line dropped (same shape as kiro-niri-dms and kiro-niri-noctalia). The bindings are unchanged.
 
 ### Files Modified
 - `etc/skel/.config/kiro-ohmyniri/cfg/calamares-vm.rule`
 - `etc/skel/.config/kiro-ohmyniri/cfg/autostart.kdl`
+- `etc/skel/.config/kiro-ohmyniri/keybindings.txt`
 - `CHANGELOG.md`
 
 ## 2026.10.14
