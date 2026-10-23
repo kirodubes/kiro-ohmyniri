@@ -35,6 +35,11 @@ binds {
     Alt+Up                               hotkey-overlay-title="Pause wallpaper" { spawn "variety" "--pause"; }
     Alt+Down                             hotkey-overlay-title="Resume wallpaper" { spawn "variety" "--resume"; }
     Alt+W                                hotkey-overlay-title="Wallpaper selector" { spawn "variety" "--selector"; }
+    // Alt+Shift: the same commands, so the keys match the editions where Alt+Shift+N recolours.
+    Alt+Shift+N                          hotkey-overlay-title="Next wallpaper" { spawn "variety" "--next"; }
+    Alt+Shift+P                          hotkey-overlay-title="Previous wallpaper" { spawn "variety" "--previous"; }
+    Alt+Shift+T                          hotkey-overlay-title="Trash wallpaper" { spawn "variety" "--trash"; }
+    Alt+Shift+F                          hotkey-overlay-title="Favorite wallpaper" { spawn "variety" "--favorite"; }
 
     // ─── CTRL+ALT app launchers (Kiro scheme) ───
     Ctrl+Alt+A                          hotkey-overlay-title="Alacritty tweak tool" { spawn "alacritty-tweak-tool"; }
