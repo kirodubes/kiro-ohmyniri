@@ -9,11 +9,11 @@
 // The shell: waybar (bar) + mako (notifications) + swaybg (wallpaper) + a
 // polkit agent — the same stack kiro-hyprland uses, so this edition matches
 // its look and feel instead of noctalia-shell's.
-spawn-sh-at-startup "swaybg -m fill -i ~/.config/niri/bg/kiro.jpg"
+spawn-sh-at-startup "swaybg -m fill -i ~/.config/kiro-ohmyniri/bg/kiro.jpg"
 spawn-sh-at-startup "env GTK_A11Y=none waybar -c ~/.config/waybar/config-ohmyniri.jsonc"
 spawn-at-startup "mako"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-sh-at-startup "~/.config/niri/scripts/import-gsettings.sh"
+spawn-sh-at-startup "~/.config/kiro-ohmyniri/scripts/import-gsettings.sh"
 
 // Idle → lock (gtklock) after 5 min, display off after 10 min. gtklock is the
 // niri-native lock choice (Smithay compositor, not wlroots — hyprlock/hypridle

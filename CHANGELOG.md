@@ -5,13 +5,16 @@
 ### What Changed
 - **New keybindings from ohmychadwm, where the key was free:** Super+Shift+N editor (VS Code), Super+Shift+B browser, Super+Shift+M Spotify, Super+Ctrl+Shift+A AI agent (`claude` in Alacritty), Super+Ctrl+A volume control and Alt+volume keys for 1% steps (`wpctl`). Super+K, Super+Ctrl+L and Super+Shift+F are niri's own window/column keys and the mic-mute key already exists; they stay as they are. New installs only (skel). Existing users: copy the new lines from `/etc/skel/.config/kiro-ohmyniri/cfg/keybinds.kdl` into `~/.config/kiro-ohmyniri/cfg/keybinds.kdl`; niri reloads the config by itself.
 
+- **Fix: black screen instead of the Kiro wallpaper.** swaybg and the gsettings import script were still pointed at `~/.config/niri/` (left over from kiro-niri), which this edition does not use, so swaybg found no image and the GTK/icon/cursor settings were not imported at login. Both now use the edition's own `~/.config/kiro-ohmyniri/bg/kiro.jpg` and `~/.config/kiro-ohmyniri/scripts/import-gsettings.sh`. Existing users: change the two paths in `~/.config/kiro-ohmyniri/cfg/autostart.kdl` the same way, then log out and in.
 ### Technical Details
 - Each new bind sits next to its sibling (Mod+Shift+B after Mod+B, Mod+Ctrl+A after Mod+V, the Alt+volume pair after XF86AudioLowerVolume) and uses the edition's existing tools; no existing bind changed. niri `spawn` is argv, so the AI agent is `spawn "alacritty" "-e" "claude"`.
 - `keybindings.txt` updated in the same commit; `niri validate` passes (it also rejects duplicate chords).
 
+- Found on the RTX 2060 test box after an ATT install: `swaybg -i ~/.config/niri/bg/kiro.jpg` running with no such file; after the fix swaybg shows `kiro.jpg` on both outputs.
 ### Files Modified
 - `etc/skel/.config/kiro-ohmyniri/cfg/keybinds.kdl`
 - `etc/skel/.config/kiro-ohmyniri/keybindings.txt`
+- `etc/skel/.config/kiro-ohmyniri/cfg/autostart.kdl`
 - `CHANGELOG.md`
 
 ## 2026.10.23
