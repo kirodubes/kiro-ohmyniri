@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026.11.15
+
+### What Changed
+- The screen turns off after 15 minutes idle (was 10), and the idle lock after 5 minutes is gone, like the other
+  Kiro editions: gtklock still locks before sleep. The comment shows how to add a 15-minute idle lock.
+
+### Technical Details
+- `cfg/autostart.kdl`: swayidle line is now `timeout 900 'niri msg action power-off-monitors' resume
+  'niri msg action power-on-monitors' before-sleep 'gtklock'` (the `timeout 300 'gtklock'` pair removed).
+- Reaches new installs only (`/etc/skel`); existing installs get it with `skell`.
+
+### Files Modified
+- `etc/skel/.config/kiro-ohmyniri/cfg/autostart.kdl`
+
 ## 2026.11.01
 
 ### The waybar clock follows the system language
